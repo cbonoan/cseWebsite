@@ -1,0 +1,38 @@
+@media screen and (max-width: 767px) {
+    .service-col {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+#services-body {
+    background: white;
+    overflow: hidden;
+    align-items: center;
+    padding: 200px 0 200px 0;
+}
+#service-header {
+    margin-bottom: 75px;
+    background: #C81B01;
+    color: white;
+} 
+.service-figure {
+    position: relative;
+}
+.service-figure img {
+    width: 100%;
+}
+.service-figure figcaption {
+    font-size: large;
+    font-weight: 600;
+    letter-spacing: 1px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    text-align: center;
+    background: #C81B01;
+}
+

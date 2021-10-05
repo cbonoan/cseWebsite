@@ -1,0 +1,12 @@
+#schedule-body {
+    background-color: #F2F2F2;
+    padding: 200px 0 200px 0;
+}
+#schedule-container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+#schedule-title {
+    color: white;
+    background: #C81B01;
+}

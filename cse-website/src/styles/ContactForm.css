@@ -1,0 +1,12 @@
+#contact-body {
+    background-color: "white";
+    padding: 200px 0 200px 0;
+}
+#contact-container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+#contact-title {
+    color: white;
+    background: #C81B01;
+}
