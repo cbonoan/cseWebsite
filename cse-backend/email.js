@@ -30,9 +30,9 @@ class Emailer {
     verifyTransporter() {
         this.transporter.verify((e, success) => {
             if(e) {
-                return e;
+                return false;
             } else {
-                return success;
+                return true;
             }
         });
     }
