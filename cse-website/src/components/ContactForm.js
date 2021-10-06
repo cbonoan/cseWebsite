@@ -35,6 +35,7 @@ function ContactForm(props) {
 
     const handleContactFormSubmit = (event) => {
         const form = event.currentTarget; 
+        event.preventDefault();
 
         // if form has input errors, function stops 
         if(form.checkValidity() === false) {
@@ -44,19 +45,27 @@ function ContactForm(props) {
             setShowMessage("Please fill out required fields.");
             setMessageColor("text-danger");
 
-            event.preventDefault();
             event.stopPropagation();
         } else if(form.checkValidity() === true) {
             setValidated(false);
 
             // try to send form data
-            axios.get("/contactFormSubmit")
+            axios.post("/contact-form-submit", {
+                name: enteredName,
+                email: enteredEmail,
+                phone: enteredPhone,
+                comment: enteredComment
+            })
                 .then(res => {
-                    setShowMessage("Comment has been received. Thank you for your feedback!");
-                    setMessageColor("text-info");
+                    setShowMessage(res.data.message);
+                    if(res.data.error) {
+                        setMessageColor("text-danger");
+                    } else {
+                        setMessageColor("text-info");
+                    }
                 })
                 .catch(e => {
-                    setShowMessage("There has been an error trying to send your feedback. Please try again later.");
+                    setShowMessage("There was an error on our side!");
                     setMessageColor("text-danger");
                 })
 
@@ -65,8 +74,8 @@ function ContactForm(props) {
             setEnteredEmail("");
             setEnteredPhone("");
             setEnteredComment("");
-            
         }
+        window.location.href="#contact-body";
     }
 
     return(
@@ -92,6 +101,7 @@ function ContactForm(props) {
                                 value={enteredName} 
                                 onChange={nameChangeHandler}
                                 placeholder="John Doe" 
+                                name="fullName"
                                 required/>
                                 <Form.Control.Feedback type="invalid">
                                 Please enter your first and last name.
@@ -108,6 +118,7 @@ function ContactForm(props) {
                                     value={enteredEmail} 
                                     onChange={emailChangeHandler}
                                     placeholder="johndoe@appleseed.com" 
+                                    name="email"
                                     required/>
                                     <Form.Control.Feedback type="invalid">
                                     Please enter a valid email.
@@ -124,6 +135,7 @@ function ContactForm(props) {
                                     value={enteredPhone}
                                     onChange={phoneChangeHandler}
                                     placeholder="0123456789" 
+                                    name="phoneNum"
                                     required/>
                                     <Form.Control.Feedback type="invalid">
                                     Please enter a valid number.
@@ -142,6 +154,7 @@ function ContactForm(props) {
                                 onChange={commentChangeHandler}
                                 style={{height: "150px"}} 
                                 placeholder="I love CSE!" 
+                                name="comment"
                                 required/>
                                 <Form.Control.Feedback type="invalid">
                                 Please enter your question or concern.

@@ -1,1 +1,4 @@
-Repository to keep track of a website I am developing for a local business.
+# Backstory/Reasoning
+In 2018, I created a website for my family's business. I had to learn web development from a bootcamp course I took on Udemy and was able to create the website using HTML, CSS, JS, Bootstrap, and PHP. I learned how to use AWS in order to host this website and I got it up and running. Here is what I created -- https://csemedi.com -- Not the greatest looking website, but it worked!
+
+Fast forward to 2021 where I gained in interest in learning React and Node and thought what better way to practice my skills than to recreate this website from scratch. Now that I have a little more experience on what tech stacks are, I have decided to use the MERN stack in order to recreate this project.

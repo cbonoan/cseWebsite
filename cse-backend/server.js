@@ -3,52 +3,73 @@ const express = require('express');
 const app = express(); 
 const port = process.env.PORT || 5000;
 
-const {google} = require('googleapis');
-const OAuth2 = google.auth.OAuth2;
-const OAuth2Client = new OAuth2(process.env.CLIENT_ID, 
-                    process.env.CLIENT_SECRET, process.env.REDIRECT_URI);
-OAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
 
-const nodemailer = require('nodemailer');
 
-const accessToken = OAuth2Client.getAccessToken()
-const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: '465',
-    auth: {
-        type: 'OAuth2',
-        user: process.env.EMAIL_USER,
-        clientId: process.env.CLIENT_ID,
-        clientSecret: process.env.CLIENT_SECRET,
-        refreshToken: process.env.REFRESH_TOKEN,
-        accessToken: accessToken
-    }
-})
+const emailer = require('./email');
+const Emailer = emailer.Emailer;
 
-transporter.sendMail({
-from: "CSE",
-to: "charleander08@gmail.com",
-subject: "test email 2",
-text: "this is a text email",
-html: "<h1>wow html is in here</h1>"
-}, (err, data) => {
-    if(err) {
-        console.log("error occured", err);
-    } else {
-        console.log("mail sent");
-    }
-})
+// transporter.sendMail({
+// from: "CSE",
+// to: "charleander08@gmail.com",
+// subject: "test email 2",
+// text: "this is a text email",
+// html: "<h1>wow html is in here</h1>"
+// }, (err, data) => {
+//     if(err) {
+//         console.log("error occured", err);
+//     } else {
+//         console.log("mail sent");
+//     }
+// })
+
+app.use(express.urlencoded({
+    extended: true
+}));
+app.use(express.json());
 
 app.get('/', (req,res) => {
     console.log("ON HOME PAGE!");
     res.send('HELLO WORLD!');
-})
+});
 
-app.get('/contactFormSubmit', (req, res) => {
-    console.log("BUTTON CLICKED");
-    res.send("it worked!");
-})
+app.post('/contact-form-submit', (req, res) => {
+    console.log("post req made!")
+    const emailer = new Emailer(process.env.EMAIL_USER, process.env.CLIENT_ID, process.env.CLIENT_SECRET, 
+                                process.env.REFRESH_TOKEN, process.env.REDIRECT_URI);
+    const verified = emailer.verifyTransporter();
+    console.log(verified);
+    // if(!verified) {
+    //     console.log("not verified")
+    //     res.send({
+    //         error: true, 
+    //         message: "An error has occured on our side. Try again later or send us an email!"
+    //     });
+    // } else {
+    //     const html = `
+    //         <h1>This is a test email made by ${req.body.name}</h1>
+    //     `
+    //     const mailOptions = {
+    //         from: "CSE Reservations",
+    //         to: "charleander08@gmail.com",
+    //         subject: "Feedback to CSE Has Been Given!",
+    //         html: html
+    //     }
+
+    //     if(!emailer.sendEmail(mailOptions)) {
+    //         res.send({
+    //             error: true, 
+    //             message: "An error has occured on our side. Try again later or send us an email!"
+    //         });
+    //     } else {
+    //         res.send({
+    //             error: false, 
+    //             message: "Your comment has been received. Thank you for your feedback!"
+    //         })
+    //     }
+    //     emailer.destroyTransport();
+    // }
+});
 
 app.listen(port,  () => {
     console.log(`LISTENING ON PORT ${port}`);
-})
+});
