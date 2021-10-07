@@ -55,8 +55,7 @@ function ContactForm(props) {
                 email: enteredEmail,
                 phone: enteredPhone,
                 comment: enteredComment
-            })
-                .then(res => {
+            }).then(res => {
                     setShowMessage(res.data.message);
                     if(res.data.error) {
                         setMessageColor("text-danger");
