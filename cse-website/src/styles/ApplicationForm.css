@@ -1,12 +1,12 @@
-#contact-body {
-    background-color: "white";
+#careers-body {
+    background-color: #F2F2F2;
     padding: 200px 0 250px 0;
 }
-#contact-container {
+#careers-container {
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
-#contact-title {
+#careers-title {
     color: white;
     background: #C81B01;
 }

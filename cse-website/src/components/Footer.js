@@ -46,6 +46,7 @@ function Footer() {
             </Container>
             {/* Copyright */}
             <div className="footer-copyright text-center py-3" style={{backgroundColor: "#323741"}}>© 2021 Copyright:
+                {/* eslint-disable-next-line */}
                 <a href="" style={{textDecoration: "none", color: "white"}}> csemedi.com</a>
             </div>
         </footer>

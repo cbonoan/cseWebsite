@@ -6,6 +6,7 @@ import About from './components/About';
 import Services from './components/Services';
 import ContactForm from './components/ContactForm';
 import ScheduleForm from './components/ScheduleForm';
+import ApplicationForm from './components/ApplicationForm';
 import Footer from './components/Footer';
 import './App.css';
 
@@ -18,7 +19,7 @@ function App() {
       {/* Need to fix format issue on schedule form with pickup time and locaiton */}
       <ScheduleForm/>
       <ContactForm/>
-      {/* <ApplicationForm/> */}
+      <ApplicationForm/>
       <Footer/>  
     </div>
   );

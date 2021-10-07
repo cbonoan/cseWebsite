@@ -24,6 +24,7 @@ function NavigationBar() {
                         <Nav.Link className="nav-link" href="#services-body">Services</Nav.Link>
                         <Nav.Link className="nav-link" href="#schedule-body">Schedule A Transport</Nav.Link>
                         <Nav.Link className="nav-link" href="#contact-body">Contact Us</Nav.Link>
+                        <Nav.Link className="nav-link" href="#careers-body">Careers</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
