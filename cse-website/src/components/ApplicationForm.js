@@ -165,7 +165,7 @@ function ApplicationForm(props) {
                         <Form.Group data-aos="fade-up" className="mb-3" controlId="experienceInput">
                             <FloatingLabel
                             controlId="experienceLabel"
-                            label="Have you had any previous relevant experience with non-emergency medical transport? Explain in detail here or leave blank."
+                            label="Describe any previous relevant experience or leave blank."
                             className="mb-3">
                                 <Form.Control 
                                 as="textarea" 

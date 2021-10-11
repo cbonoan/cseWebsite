@@ -16,7 +16,6 @@ function App() {
       <NavigationBar/>
       <About/>
       <Services/>
-      {/* Need to fix format issue on schedule form with pickup time and locaiton */}
       <ScheduleForm/>
       <ContactForm/>
       <ApplicationForm/>

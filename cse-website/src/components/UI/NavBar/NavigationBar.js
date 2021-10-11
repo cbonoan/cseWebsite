@@ -3,7 +3,7 @@ import cseLogo from "../../../images/logo.png";
 import {Container, Navbar, Nav} from "react-bootstrap";
 import '../../../styles/NavigationBar.css'
 
-function NavigationBar() {
+function NavigationBar(props) {
     const logoScaleMult = 0.12;
 
     return (
