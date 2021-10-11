@@ -6,6 +6,8 @@ import axios from "axios";
 
 import '../styles/ContactForm.css';
 
+require('dotenv').config();
+
 function ContactForm(props) {
     useEffect(() => {
         Aos.init({duration: 1000});
@@ -50,7 +52,7 @@ function ContactForm(props) {
             setValidated(false);
 
             // try to send form data
-            const host = process.env.HOST;
+            const host = process.env.APP_HOST;
             axios.post(`${host}/api/contact-form-submit`, {
                 name: enteredName,
                 email: enteredEmail,

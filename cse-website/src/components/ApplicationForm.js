@@ -6,6 +6,8 @@ import "aos/dist/aos.css";
 
 import "../styles/ApplicationForm.css";
 
+require('dotenv').config();
+
 function ApplicationForm(props) {
     useEffect(() => {
         Aos.init({duration: 1000});
@@ -71,7 +73,7 @@ function ApplicationForm(props) {
             formData.append('phone', enteredPhone);
             formData.append('experience', enteredExperience);
             // try to send form data
-            const host = process.env.HOST;
+            const host = process.env.APP_HOST;
             axios.post(`${host}/api/application-form-submit`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
