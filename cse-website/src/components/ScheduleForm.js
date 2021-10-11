@@ -99,8 +99,8 @@ function ScheduleForm() {
             event.stopPropagation();
         } else {
             setValidated(false);
-
-            axios.post('/api/reservation-form-submit', {
+            const host = process.env.HOST;
+            axios.post(`${host}/api/reservation-form-submit`, {
                 name: enteredName,
                 email: enteredEmail,
                 phone: enteredPhone,
