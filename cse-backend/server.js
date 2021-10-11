@@ -6,14 +6,9 @@ const fileUpload = require('express-fileupload');
 const port = process.env.PORT || 5000;
 
 const emailer = require('./email');
+const database = require('./database');
 const Emailer = emailer.Emailer;
-
-function createEmailer() {
-    const emailer = new Emailer(process.env.EMAIL_USER, process.env.CLIENT_ID, process.env.CLIENT_SECRET, 
-        process.env.REFRESH_TOKEN, process.env.REDIRECT_URI);
-    
-    return emailer;
-}
+const Db = database.Database; 
 
 console.log(process.env.CSE_EMAIL);
 
@@ -23,6 +18,19 @@ app.use(express.urlencoded({
 app.use(express.json());
 app.use(fileUpload());
 app.use(cors());
+
+function createEmailer() {
+    const emailer = new Emailer(process.env.EMAIL_USER, process.env.CLIENT_ID, process.env.CLIENT_SECRET, 
+        process.env.REFRESH_TOKEN, process.env.REDIRECT_URI);
+    
+    return emailer;
+}
+
+function createDbEntry(name, request) {
+    const date = new Date();
+    const db = new Db(name, date, request);
+    db.saveEntry();
+}
 
 app.post('/contact-form-submit', (req, res) => {
     const emailer = createEmailer();
@@ -40,6 +48,7 @@ app.post('/contact-form-submit', (req, res) => {
             <hr>
             <p><b>Email: </b>${req.body.email}</p>
             <p><b>Phone Number: </b>${req.body.phone}</p>
+            <b><a href="mailto:${req.body.email}?subject=Reservation Confirmation">Click here to reply to customer</a></b>
         `
         const mailOptions = {
             from: "CSE Reservations",
@@ -56,12 +65,12 @@ app.post('/contact-form-submit', (req, res) => {
             });
         } else {
             emailer.destroyTransport();
+            createDbEntry(req.body.name, 'feedback');
             return res.send({
                 error: false, 
                 message: "Your comment has been received. Thank you for your feedback!"
             })
         }
-        emailer.destroyTransport();
     }
 });
 
@@ -105,12 +114,12 @@ app.post('/reservation-form-submit', (req, res) => {
             });
         } else {
             emailer.destroyTransport();
+            createDbEntry(req.body.name, 'reservation');
             return res.send({
                 error: false, 
                 message: "Your reservation has been requested. We will contact you to confirm shortly. Thank you for using CSE!"
             })
         }
-        emailer.destroyTransport();
     }
 })
 
@@ -124,6 +133,8 @@ app.post('/application-form-submit', (req,res) => {
             message: "An error has occured on our side. Try again later or send us an email!"
         });
     } else {
+        /* To send email with resume attached, first I save the file that was uploaded locally to a folder, 
+        then I add the file path to that file to the attachments options for nodemailer */
         const file = req.files.file
         file.mv(`${__dirname}/uploads/${file.name}`, e => {
             if(e) {
@@ -136,6 +147,14 @@ app.post('/application-form-submit', (req,res) => {
                 console.log('File moved');
             }
         });
+
+        var prevExperience = ""
+        // Since this input is optional in the form, I will check if there is information to add on to the email or not
+        if(req.body.experience == null) {
+            prevExperience = "No previous experience";
+        } else {
+            prevExperience = req.body.experience;
+        }
         const html = `
             <h2>Applicant Details</h2>
             <p><b>Name: </b>${req.body.name}</p>
@@ -143,7 +162,7 @@ app.post('/application-form-submit', (req,res) => {
             <p><b>Phone Number: </b>${req.body.phone}</p>
             <hr>
             <h2>Experience Details</h2>
-            <p><b>Relevant Previous Experience: </b>${req.body.experience}</p>
+            <p><b>Previous Experience: </b>${prevExperience}</p>
             <b><a href="mailto:${req.body.email}?subject=CSE Application Update">Click here to reply to applicant</a></b>
             <p><b>Resume Attached Below</b></p>
         `
@@ -168,6 +187,7 @@ app.post('/application-form-submit', (req,res) => {
             });
         } else {
             emailer.destroyTransport();
+            createDbEntry(req.body.name, 'application');
             return res.send({
                 error: false, 
                 message: "We have received your application. Thank you for applying!"
