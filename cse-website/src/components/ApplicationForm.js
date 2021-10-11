@@ -71,8 +71,8 @@ function ApplicationForm(props) {
             formData.append('phone', enteredPhone);
             formData.append('experience', enteredExperience);
             // try to send form data
-            const host = process.env.REACT_APP_HOST;
-            axios.post(`${host}/api/application-form-submit`, formData, {
+            const host = window.location;
+            axios.post(`${host.protocol}//${host.host}/api/application-form-submit`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
