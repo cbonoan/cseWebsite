@@ -50,7 +50,7 @@ function ContactForm(props) {
             setValidated(false);
 
             // try to send form data
-            axios.post("/contact-form-submit", {
+            axios.post("/api/contact-form-submit", {
                 name: enteredName,
                 email: enteredEmail,
                 phone: enteredPhone,

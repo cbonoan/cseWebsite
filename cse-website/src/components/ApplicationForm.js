@@ -71,7 +71,7 @@ function ApplicationForm(props) {
             formData.append('phone', enteredPhone);
             formData.append('experience', enteredExperience);
             // try to send form data
-            axios.post("/application-form-submit", formData, {
+            axios.post("/api/application-form-submit", formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

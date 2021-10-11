@@ -32,7 +32,7 @@ function createDbEntry(name, request) {
     db.saveEntry();
 }
 
-app.post('/contact-form-submit', (req, res) => {
+app.post('/api/contact-form-submit', (req, res) => {
     const emailer = createEmailer();
     const verified = emailer.verifyTransporter();
     if(verified === false) {
@@ -74,7 +74,7 @@ app.post('/contact-form-submit', (req, res) => {
     }
 });
 
-app.post('/reservation-form-submit', (req, res) => {
+app.post('/api/reservation-form-submit', (req, res) => {
     const emailer = createEmailer();
     const verified = emailer.verifyTransporter();
     if(verified === false) {
@@ -123,7 +123,7 @@ app.post('/reservation-form-submit', (req, res) => {
     }
 })
 
-app.post('/application-form-submit', (req,res) => {
+app.post('/api/application-form-submit', (req,res) => {
     const emailer = createEmailer();
     const verified = emailer.verifyTransporter();
     if(verified === false) {

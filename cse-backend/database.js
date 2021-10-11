@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/cseDb', {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {
-        console.log('Connection open!');
+        console.log('Connection to mongo open!');
     })
     .catch(err => {
         console.log(err);

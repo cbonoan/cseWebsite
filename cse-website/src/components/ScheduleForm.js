@@ -100,7 +100,7 @@ function ScheduleForm() {
         } else {
             setValidated(false);
 
-            axios.post('/reservation-form-submit', {
+            axios.post('/api/reservation-form-submit', {
                 name: enteredName,
                 email: enteredEmail,
                 phone: enteredPhone,
