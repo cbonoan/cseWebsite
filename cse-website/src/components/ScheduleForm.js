@@ -101,7 +101,7 @@ function ScheduleForm() {
             event.stopPropagation();
         } else {
             setValidated(false);
-            const host = process.env.APP_HOST;
+            const host = process.env.REACT_APP_HOST;
             axios.post(`${host}/api/reservation-form-submit`, {
                 name: enteredName,
                 email: enteredEmail,

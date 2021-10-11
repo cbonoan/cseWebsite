@@ -52,7 +52,7 @@ function ContactForm(props) {
             setValidated(false);
 
             // try to send form data
-            const host = process.env.APP_HOST;
+            const host = process.env.REACT_APP_HOST;
             axios.post(`${host}/api/contact-form-submit`, {
                 name: enteredName,
                 email: enteredEmail,
