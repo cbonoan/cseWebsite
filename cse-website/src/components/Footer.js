@@ -20,7 +20,7 @@ function Footer() {
                             <li>
                                 <p>
                                     <i className="bi bi-telephone me-3"></i>
-                                    661-932-2218
+                                    <a href="tel:6619322218" style={{textDecoration: "none", color: "white"}}>661-932-2218</a>
                                 </p>
                             </li>
                             <li>
