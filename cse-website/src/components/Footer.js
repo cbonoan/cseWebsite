@@ -13,12 +13,6 @@ function Footer() {
                         <ul className="list-unstyled">
                             <li>
                                 <p>
-                                    <i className="bi bi-envelope me-3"></i>
-                                    csemeditransport@gmail.com
-                                </p>
-                            </li>
-                            <li>
-                                <p>
                                     <i className="bi bi-telephone me-3"></i>
                                     <a href="tel:6619322218" style={{textDecoration: "none", color: "white"}}>661-932-2218</a>
                                 </p>
@@ -27,6 +21,18 @@ function Footer() {
                                 <p>
                                     <i className="bi bi-printer me-3"></i>
                                     661-932-0011
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <i className="bi bi-envelope me-3"></i>
+                                    csemeditransport@gmail.com
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <i className="bi bi-geo-alt me-3"></i>
+                                    1601 New Stine Rd Suite 120, Bakersfield, CA, 93309
                                 </p>
                             </li>
                         </ul>
