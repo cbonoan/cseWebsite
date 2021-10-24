@@ -145,7 +145,7 @@ function ApplicationForm(props) {
                                     </Form.Control.Feedback>
                                 </FloatingLabel>
                             </Form.Group>
-                            <Form.Group data-aos="fade-left" as={Col} controlId="phoneColInput">
+                            <Form.Group data-aos="fade-right" as={Col} controlId="phoneColInput">
                                 <FloatingLabel
                                 controlId="phoneLabel"
                                 label="Phone Number *"
@@ -166,7 +166,7 @@ function ApplicationForm(props) {
                         <Form.Group data-aos="fade-up" className="mb-3" controlId="experienceInput">
                             <FloatingLabel
                             controlId="experienceLabel"
-                            label="Describe any previous relevant experience or leave blank."
+                            label="Describe any previous relevant experience you may have."
                             className="mb-3">
                                 <Form.Control 
                                 as="textarea" 

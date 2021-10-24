@@ -173,7 +173,7 @@ function ScheduleForm() {
                                     </Form.Control.Feedback>
                                 </FloatingLabel>
                             </Form.Group>
-                            <Form.Group data-aos="fade-left" as={Col} controlId="phoneColInput">
+                            <Form.Group data-aos="fade-right" as={Col} controlId="phoneColInput">
                                 <FloatingLabel
                                 controlId="phoneLabel"
                                 label="Phone Number *"
@@ -198,7 +198,7 @@ function ScheduleForm() {
                                     </Form.Control.Feedback>
                                 </FloatingLabel>
                             </Form.Group>
-                            <Form.Group data-aos="fade-left" as={Col} controlId="pickupTimeInput">
+                            <Form.Group data-aos="fade-right" as={Col} controlId="pickupTimeInput">
                                 <FloatingLabel
                                 controlId="pickupTimeLabel"
                                 label="Pickup Time *"
@@ -212,7 +212,7 @@ function ScheduleForm() {
                             
                         </Row>
                         <Row>
-                            <Form.Group data-aos="fade-left" as={Col} controlId="pickupLocationInput">
+                            <Form.Group data-aos="fade-right" as={Col} controlId="pickupLocationInput">
                                 <FloatingLabel
                                 controlId="pickupLocationLabel"
                                 label="Pickup Location *"
@@ -238,7 +238,7 @@ function ScheduleForm() {
                                     </Form.Select>
                                 </FloatingLabel>
                             </Form.Group>
-                            <Form.Group data-aos="fade-left" as={Col} controlId="dropoffLocationInput">
+                            <Form.Group data-aos="fade-right" as={Col} controlId="dropoffLocationInput">
                                 <FloatingLabel
                                 controlId="dropoffLocationLabel"
                                 label="Dropoff Location *"
@@ -253,7 +253,7 @@ function ScheduleForm() {
                         <Form.Group data-aos="fade-up" className="mb-3" controlId="commentInput">
                             <FloatingLabel
                             controlId="commentLabel"
-                            label="Enter any information our driver should know."
+                            label="Enter any additional information."
                             className="mb-3">
                                 <Form.Control as="textarea" style={{height: "150px"}} value={enteredInformation} onChange={infoChangeHandler} placeholder="I love CSE!"/>
                             </FloatingLabel>

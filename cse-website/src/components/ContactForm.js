@@ -127,7 +127,7 @@ function ContactForm(props) {
                                     </Form.Control.Feedback>
                                 </FloatingLabel>
                             </Form.Group>
-                            <Form.Group data-aos="fade-left" as={Col} controlId="phoneColInput">
+                            <Form.Group data-aos="fade-right" as={Col} controlId="phoneColInput">
                                 <FloatingLabel
                                 controlId="phoneLabel"
                                 label="Phone Number *"
