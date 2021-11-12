@@ -1,5 +1,5 @@
 import React from "react";
-import cseLogo from "../../../images/logo.png";
+import cseLogo from "../../../images/svg-logo.svg";
 import {Container, Navbar, Nav} from "react-bootstrap";
 import '../../../styles/NavigationBar.css'
 
@@ -7,7 +7,7 @@ function NavigationBar(props) {
     const logoScaleMult = 0.12;
 
     return (
-        <Navbar collapseOnSelect sticky="top" expand="lg" id="navbar">
+        <Navbar sticky="top" expand="lg" id="navbar">
             <Container>
                 <Navbar.Brand href="/">
                     <img

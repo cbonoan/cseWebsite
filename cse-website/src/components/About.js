@@ -19,7 +19,7 @@ function About() {
         position: "absolute",
         top: "50%",
         left: "50%",
-        transform: "translate(-50%,-75%)"
+        transform: "translate(-50%,-55%)"
     };
     return (
         <div id="about-body">
@@ -28,7 +28,7 @@ function About() {
                     <div style={insideStyles}>
                         <Row>
                             <Col xs={12} lg={6}>
-                                <div style={{textAlign: "right"}}>
+                                <div style={{textAlign: "center"}}>
                                     <strong style={{fontSize: 40}}>
                                         Need a lift to your next appointment? <br/>
                                         Let CSE take care of you!
@@ -37,7 +37,7 @@ function About() {
                                 
                             </Col>
                             <Col xs={12} lg={6}>
-                                <p style={{fontSize: 17}}>
+                                <p style={{fontSize: 17}} className="text-center">
                                     We are a non-emergency, round-the-clock, medical transporter team
                                     who provides residents of Kern County a safe and secured transport
                                     services to their medical appointments. Our vehicles are equipped
